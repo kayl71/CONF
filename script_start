@@ -1,0 +1,6 @@
+(
+    echo "echo start test script";
+    echo "set VAR qwerty";
+    echo "echo VAR = \$VAR"
+    cat;
+) | python3 main.py
