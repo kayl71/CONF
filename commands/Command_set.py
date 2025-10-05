@@ -10,7 +10,7 @@ class Command_set(Command):
     def decsription(self) -> str:
         return "Устанавливает значение переменной"
     
-    def excecute(self, args, stdin, stdout, stderr, params):
+    def excecute(self, args, stdin, stdout, stderr, params, tools):
         stdin_text = stdin.read()
         if len(args) == 0 and len(stdin_text) == 0:
             stderr.write("No arguments")

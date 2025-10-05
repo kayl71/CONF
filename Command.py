@@ -10,7 +10,7 @@ class Command(ABC):
         pass
 
     @abstractmethod
-    def excecute(self, args: List[str], stdin: TextIO, stdout: TextIO, stderr: TextIO, params: Dict[str, str] ) -> int:
+    def excecute(self, args: List[str], stdin: TextIO, stdout: TextIO, stderr: TextIO, params: Dict[str, str], tools ) -> int:
         """Выполняет команду с переданными аргументами"""
         pass
 

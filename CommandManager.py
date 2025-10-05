@@ -56,6 +56,6 @@ class CommandManager:
         """Проверить существование команды по имени"""
         return self.commands.__contains__(command_name)
     
-    def execute_command(self, command_name: str, args: List[str], stdin: TextIO, stdout: TextIO, stderr: TextIO, params: Dict[str, str]):
+    def execute_command(self, command_name: str, args: List[str], stdin: TextIO, stdout: TextIO, stderr: TextIO, params: Dict[str, str], tools):
         """Выполить команду по имени"""
-        self.commands.get(command_name).excecute(args, stdin, stdout, stderr, params)
+        self.commands.get(command_name).excecute(args, stdin, stdout, stderr, params, tools)

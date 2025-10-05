@@ -10,7 +10,7 @@ class Command_echo(Command):
     def decsription(self) -> str:
         return "Выводит переданные аргументы"
     
-    def excecute(self, args, stdin, stdout, stderr, params):
+    def excecute(self, args, stdin, stdout, stderr, params, tools):
         stdin.seek(0)
         if stdin.read():
             stdin.seek(0)

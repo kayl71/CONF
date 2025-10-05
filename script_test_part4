@@ -1,0 +1,16 @@
+(
+    echo "write file1 text in file1";
+    echo "head file1";
+    echo "mkdir dir1";
+    echo "mkdir dir2";
+    echo "ls";
+    echo "cd dir1";
+    echo "mkdir dir2";
+    echo "write file1 text in file1 but in dir1";
+    echo "ls";
+    echo "head file1";
+    echo "wc file1";
+    echo "date";
+    echo "cd ..";
+    cat;
+) | python3 main.py

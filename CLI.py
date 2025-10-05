@@ -1,14 +1,16 @@
 from CommandManager import CommandManager
 import re
 from io import StringIO
+from VFS import VFS
 
 class CLI:
     def __init__(self):
         self.params = {"USER" : "username", "HOSTNAME" : "hostname", "PWD" : "~", "RUNNING" : "True"}
+        self.tools = {"VFS" : VFS()}
         self.command_manager = CommandManager()
         self.stdin = StringIO()
         self.stdout = StringIO()
-        self.stderr = StringIO()  
+        self.stderr = StringIO()
         
 
     def get_start(self):
@@ -32,7 +34,7 @@ class CLI:
         for segment_conv in splitted_line_conv:
             segment_conv_splitted = segment_conv.split()
             if self.command_manager.contain_command(segment_conv_splitted[0]):
-                self.command_manager.execute_command(segment_conv_splitted[0], segment_conv_splitted[1:], self.stdin, self.stdout, self.stderr, self.params)
+                self.command_manager.execute_command(segment_conv_splitted[0], segment_conv_splitted[1:], self.stdin, self.stdout, self.stderr, self.params, self.tools)
 
                 # Запись выхода команды на вход следующией команды 
                 self.stdin.seek(0)
