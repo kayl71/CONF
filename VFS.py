@@ -78,6 +78,26 @@ class VFS:
             return self.zf.getinfo(filename)
         raise FileNotFoundError(f"File {filename} not found in archive")
 
+    def delete_files_and_dirs(self, filenames_list = [], dirnames_list = []):
+        for i in range(len(filenames_list)):
+            filenames_list[i] = self._add_start_path(filenames_list[i])
+        for i in range(len(dirnames_list)):
+            dirnames_list[i] = self._add_start_path(dirnames_list[i])
+            if dirnames_list[i][-1] != '/':
+                dirnames_list[i] += '/'
+
+        zf_temp = zipfile.ZipFile('vfs.zip.temp', 'w')
+        for item in self.zf.infolist():
+            if not item.filename in filenames_list and not item.filename in dirnames_list:
+                if item.filename[-1] == '/':
+                    zf_temp.writestr(item.filename, b'')
+                else:
+                    data = self.read_file(item.filename)
+                    data = data.encode('utf-8')
+                    data = base64.b64encode(data).decode('ascii')
+                    zf_temp.writestr(item.filename, data)
+        self.zf = zf_temp
+        os.remove('vfs.zip.temp')
     
     def _add_start_path(self, filename):
         if filename[:1] != '~':

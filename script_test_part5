@@ -1,0 +1,18 @@
+(
+    echo "write file1 text in file1";
+    echo "mkdir dir1";
+    echo "cd dir1";
+    echo "write file1 text in file1 but in dir1";
+    echo "write file2 text in file2 in dir1";
+    echo "ls";
+    echo "cd ..";
+    echo "mv file1 file_new";
+    echo "head file1";
+    echo "cd dir1";
+    echo "ls";
+    echo "head file1";
+    echo "rm file1";
+    echo "ls";
+    echo "cd ..";
+    cat;
+) | python3 main.py

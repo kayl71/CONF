@@ -27,10 +27,11 @@ class Command_write(Command):
             for arg in args:
                 text += str(arg) + ' '
         vfs = tools['VFS']
-        if vfs.contain_file(file_name):
-            stderr.write('File with name ' + file_name + ' already exists. ZIP does not support file overwriting')
+        full_file_name = params['PWD'] + '/' + file_name
+        if vfs.contain_file(full_file_name):
+            stderr.write('File with name ' + full_file_name + ' already exists. ZIP does not support file overwriting')
             return 1
         
-        vfs.add_file(file_name, text)
+        vfs.add_file(full_file_name, text)
         
         return 0
